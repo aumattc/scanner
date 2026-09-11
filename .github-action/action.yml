@@ -1,0 +1,21 @@
+name: 'Gemini Legacy Code Scanner'
+description: 'Parses legacy AST nodes and auto-refactors vulnerabilities via Gemini API.'
+inputs:
+  gemini_api_key: 'AQ.Ab8RN6J3W5TrU07KUxao-IBIK_vsXjI7xou5bgX2WqFh7QXDOw'
+    description: 'API Key for Gemini API'
+    required: true
+  target_language:
+    description: 'Language to parse (e.g., php, python, java)'
+    required: true
+    default: 'php'
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - '--path'
+    - '${{ github.workspace }}'
+    - '--lang'
+    - '${{ inputs.target_language }}'
+  env:
+    GEMINI_API_KEY: ${{ inputs.gemini_api_key }}

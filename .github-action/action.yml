@@ -1,20 +1,20 @@
 name: 'Niche AI Code Scanner & Refactoring Bot'
 description: 'Scans legacy codebases for security vulnerabilities and auto-generates modern refactoring PRs using Gemini Flash-Lite.'
 inputs:
-  gemini_api_key: 'AQ.Ab8RN6J3W5TrU07KUxao-IBIK_vsXjI7xou5bgX2WqFh7QXDOw'
-    description: 'Gemini API key for LLM analysis'
-    required: true
-  target_language:
-    description: 'Language to scan (e.g., php, python, cobol)'
-    required: true
-    default: 'php'
+gemini_api_key:
+description: 'Gemini API key for LLM analysis'
+required: true
+target_language:
+description: 'Language to scan (e.g., php, python, cobol)'
+required: true
+default: 'php'
 runs:
-  using: 'docker'
-  image: 'Dockerfile'
-  args:
-    - '--path'
-    - '${{ github.workspace }}'
-    - '--lang'
-    - '${{ inputs.target_language }}'
-  env:
-    GEMINI_API_KEY: ${{ inputs.gemini_api_key }}
+using: 'docker'
+image: 'Dockerfile'
+args:
+- '--path'
+- '${{ github.workspace }}'
+- '--lang'
+- '${{ inputs.target_language }}'
+env:
+GEMINI_API_KEY: ${{ inputs.gemini_api_key }}

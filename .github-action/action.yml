@@ -4,3 +4,6 @@ description: 'Runs Tree-Sitter AST analysis and Gemini Flash-Lite refactoring'
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - '--path'
+    - '.'
